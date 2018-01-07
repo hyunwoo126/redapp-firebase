@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redapp.co | Dashbaord</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div id="app">
+        
+
+        <div id="login_container" class="dashboard_login_container" v-if="!login.on">
+            <div class="base_boxshadow_1">
+                <div class="base_header_redapp">
+                    <span class="base_header_red base_color_red">RED</span><span class="base_header_app base_color_grey_900">APP</span>
+                    <span class="dashboard_loginHeader_dashboard">Dashboard</span>
+                </div>
+    
+                <input style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email" v-model="login.email"/>
+                &nbsp;&nbsp;&nbsp;
+                <input style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password" v-model="login.password"/>
+                <br/><br/>
+                <button id="quickstart-sign-in" name="signin" v-on:click="signIn">Sign In</button>
+                &nbsp;&nbsp;&nbsp;
+                <button id="quickstart-sign-up" name="signup" class="display_none">Sign Up</button>
+                &nbsp;&nbsp;&nbsp;
+                <button id="quickstart-verify-email" name="verify-email" class="display_none">Send Email Verification</button>
+                &nbsp;&nbsp;&nbsp;
+                <button id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
+            
+            </div>
+        </div>
+
+        <div v-if="login.on">
+            <div class="mail_loginStatus">
+                You are signed in as <strong><span id="quickstart-sign-in-status">{{currentUser.email}}</span></strong>.
+                <button id="login_signout" name="slogin_ignout" v-on:click="signOut">Sign Out</button>
+                <a href="#" onclick="sendPasswordReset()">Reset Password</a>
+            </div>
+
+            <new-client v-if="login.isAdmin"></new-client>
+            
+            <ul>
+                <li
+                    is="clients"
+                    v-for="client in clients"
+                    v-bind:client="client">
+                </li>
+            </ul>
+                
+        </div>
+
+        
+
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script> -->
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCIoEKozWUbMyUmbeQ2N7Rb1V4alF9J1-c",
+        authDomain: "redapp-1.firebaseapp.com",
+        databaseURL: "https://redapp-1.firebaseio.com",
+        projectId: "redapp-1",
+        storageBucket: "redapp-1.appspot.com",
+        messagingSenderId: "346231253222"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</body>
+</html>
+    
+    

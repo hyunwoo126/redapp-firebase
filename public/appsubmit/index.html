@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Redapp.co | Reach China's 700 million mobile users</title>
+<script src="https://use.fontawesome.com/7d18d79adf.js"></script>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">-->
+<meta name="description" content="Reach China's 700 million smartphone users by launching your app on China's most popular app stores.">
+<meta name="keywords" content="redapp, app, appstore, mobile, china, android, ios, xiaomi, huawei, tencent, baidu, wechat, alipay, alibaba">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="date=no">
+<meta name="format-detection" content="address=no">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/form.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+</head>
+<body class="form base_background_red_grad_V">
+<div class="base_logo_name">
+    <span class="base_color_white">RED</span><span class="base_color_grey_900">APP</span>
+</div>
+<div class="base_logo_slogan">Reach China's 700 million mobile users.</div>
+
+<div id="data" class="base_form">
+    <h1>App Submission Form <sup>BETA</sup></h1>
+    <div class="form_instruction">All fields are required. Please follow the requirements carefully.</div>
+    <ol>
+        <li v-bind:class="{ isReady: email.isReady, hasError: email.hasError }">
+            <label for="email">Email:</label><br>
+            <input type="email" name="email" v-model="email.value" v-on:keyup="changeEmail">
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please enter a valid email</span>
+            </div>
+            <ul>
+                <li>We will use this email to notify you about your app's progress in China.</li>
+            </ul>
+        </li>
+        <li v-bind:class="{ isReady: name.isReady, hasError: name.hasError }">
+            <label for="name">App name:</label><br>
+            <input type="text" name="name" v-model="name.value" v-on:keyup="changeName">
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>App name must be less than 20 characters</span>
+            </div>
+        </li>
+        <li v-bind:class="{ isReady: desc_long.isReady, hasError: desc_long.hasError }">
+            <label for="desc_long">App Description (long):</label><br>
+            <textarea name="desc_long" id="desc_long" rows="5" v-model="desc_long.value" v-on:change="changeDescL"></textarea>
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please see requirements below:</span>
+            </div>
+            <ul>
+                <li>Less than 500 English characters or less than 200 Chinese characters.</li>
+                <li>Cannot include words "最新", "最大" or similar words.</li>
+            </ul>
+        </li>
+        <li v-bind:class="{ isReady: desc_short.isReady, hasError: desc_short.hasError }">
+            <label for="desc_short">App Description (short):</label><br>
+            <input name="desc_short" id="desc_short" v-model="desc_short.value" v-on:change="changeDescS">
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please see requirements below:</span>
+            </div>
+            <ul>
+                <li>One sentence, less than 10 Chinese characters.</li>
+            </ul>
+        </li>
+        <li v-bind:class="{ isReady: apk.isReady, hasError: apk.hasError }">
+            <label>APK:</label><br>
+            <input id="apk" type="file" name="apk" v-on:change="changeFiles"><br>
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please see requirements below:</span>
+            </div>
+            <ul>
+                <li>File must be in APK format.</li>
+                <li>File must be less than 24MB.</li>
+                <li>
+                    The version must be higher than the the one on Google Play Store. 
+                    There are cases where stores will grab the app from the Play Store instead. 
+                    If your app is not on Goole Play Store, this requirement is not applicable to you.
+                </li>
+            </ul>
+        </li>
+        <li v-bind:class="{ isReady: icon.isReady, hasError: icon.hasError }">
+            <label>icon:</label><br>
+            <input id="icon" type="file" name="icon" v-on:change="changeFiles"><br>
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please see requirements below:</span>
+            </div>
+            <ul>
+                <li>Icon image must be in png or jpg format.</li>
+                <li>Dimensions must be 512 x 512</li>
+            </ul>
+        </li>
+        <li v-bind:class="{ isReady: promo.isReady, hasError: promo.hasError }">
+            <label>Promo Image:</label><br>
+            <input id="promo" type="file" name="promo" v-on:change="changeFiles"><br>
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please see requirements below:</span>
+            </div>
+            <ul>
+                <li>Image must be in png or jpg format.</li>
+                <li>Dimensions must be 1024 x 500</li>
+            </ul>
+        </li>
+        <li v-bind:class="{ isReady: shots.isReady, hasError: shots.hasError }">
+            <label>Screenshots:</label><br>
+            <input id="shot1" type="file" name="shot1" v-on:change="changeShots"><br>
+            <input id="shot2" type="file" name="shot2" v-on:change="changeShots"><br>
+            <input id="shot3" type="file" name="shot3" v-on:change="changeShots"><br>
+            <input id="shot4" type="file" name="shot4" v-on:change="changeShots"><br>
+            <input id="shot5" type="file" name="shot5" v-on:change="changeShots"><br>
+            <div class="msg_ready">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>This looks good.</span>
+            </div>
+            <div class="msg_error">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <span>Please see requirements below:</span>
+            </div>
+            <ul>
+                <li>images must be in png or jpg format.</li>
+                <li>Dimensions must be 480 x 800</li>
+                <li>Must have at least 5 screenshots.</li>
+            </ul>
+    
+        </li>
+    </ol>
+
+    <button id="submit-btn" class="base_background_red_grad_V" v-bind:class="{base_boxshadow_3 : !submitDisabled}" :disabled=submitDisabled>Submit to Redapp!</button>
+</div>
+<div class="form_overlay">
+    <div class="center-center">
+        <div class="inProgress">
+            <div>Form submission in progress...</div>
+            <div class="progressBar_wrapper">
+                <div id="progressBar_percent">0</div>
+                <div id="progressBar_bar" class="base_background_red"></div>
+            </div>
+            <div style="font-style: italic;">Please be patient with us as we upload your files and images.</div>
+        </div>
+        <div class="complete">
+            <div>
+                Thank you for submitting your form. </br>
+                You should receive a confirmation email to the email address you have provided. </br>
+                If you do not receive the confirmation email within a reasonable time, shoot us an email at sky@lincko.co </br>
+                Thanks!
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+<script>
+    function getFileExt(fileName){
+        var ext = fileName.toLowerCase().match(/\.([a-zA-Z0-9]*)$/i);
+        if(ext && ext[1]){
+            return ext[1];
+        } else {
+            return false;
+        }
+    }
+
+    function validateEmail(email){
+        var re = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        return re.test(email);
+    }
+
+
+
+    var data_v = new Vue({
+        el: '#data',
+        data: {
+            email: {
+                isReady: false,
+                hasError: false,
+                value: '',
+            },
+            name: {
+                isReady: false,
+                hasError: false,
+                value: '',
+            },
+            desc_long: {
+                isReady: false,
+                hasError: false,
+                value: '',
+            },
+            desc_short: {
+                isReady: false,
+                hasError: false,
+                value: '',
+            },
+            apk: {
+                isReady: false,
+                hasError: false,
+                ext: ['apk'],
+                size: 24, //MB
+                value: null,
+            },
+            icon: {
+                isReady: false,
+                hasError: false,
+                ext: ['png', 'jpg'],
+                dim: [512, 512],
+                value: null,
+            },
+            promo: {
+                isReady: false,
+                hasError: false,
+                ext: ['png', 'jpg'],
+                dim: [1024, 500],
+                value: null,
+            },
+            shots: {
+                isReady: false,
+                hasError: false,
+                ext: ['png', 'jpg'],
+                dim: [480, 800],
+                multiVal: true,
+                value: {
+                    shot1: null,
+                    shot2: null,
+                    shot3: null,
+                    shot4: null,
+                    shot5: null,
+                },
+            },
+        },
+        methods: {
+            changeEmail: function(e){
+                var email = this.email;
+                if(email.value.length < 1){
+                    email.isReady = false;
+                    email.hasError = false;
+                }
+                else if(validateEmail(email.value)){
+                    email.isReady = true;
+                    email.hasError = false;
+                } else {
+                    email.isReady = false;
+                    email.hasError = true;
+                }
+            },
+            changeName: function(e){
+                if(this.name.value.length > 0){
+                    this.name.isReady = true;
+                    this.name.hasError = false;
+                } else {
+                    this.name.isReady = false;
+                    this.name.hasError = false;
+                }
+            },
+            changeDescL: function(e){
+                var desc_long = this.desc_long;
+                var text = this.desc_long.value;
+
+                if(text.length < 1){ //empty
+                    desc_long.isReady = false;
+                    desc_long.hasError = false;
+                    return;
+                }
+
+                var count_cn = (text.match(/[\u3400-\u9FBF]/g) || []).length;
+                var count_en = text.length - count_cn;
+                var exclude = ['最新', '最大'];
+
+                var hasError = function(){
+                    desc_long.hasError = true;
+                    desc_long.isReady = false;
+                }
+
+                if(count_cn < 200 && count_en < 500){
+                    for(var i in exclude){
+                        if(text.indexOf(exclude[i]) > -1){ //has forbidden word
+                            hasError();
+                            return;
+                        }
+                    }
+                    desc_long.hasError = false;
+                    desc_long.isReady = true;
+
+                } else {
+                    hasError();
+                }
+            },
+            changeDescS: function(e){
+                var desc_short = this.desc_short;
+                var text = this.desc_short.value;
+
+                if(text.length < 1){ //empty
+                    desc_short.isReady = false;
+                    desc_short.hasError = false;
+                    return;
+                }
+
+                var count_cn = (text.match(/[\u3400-\u9FBF]/g) || []).length;
+
+                if(count_cn < 10){
+                    desc_short.isReady = true;
+                    desc_short_hasError = false;
+                } else {
+                    desc_short.isReady = false;
+                    desc_short.hasError = true;
+                }
+            },
+            changeShots: function(e){
+                var shots = this.shots;
+                var targetName = e.target.name;        
+                var file = e.target.files[0];
+
+                var cancel = function(){
+                    shots.isReady = false;
+                    shots.value[targetName] = null;
+                    e.target.value = '';
+                }
+                var hasError = function(){
+                    shots.hasError = true;
+                    shots.isReady = false;
+                    e.target.value = '';
+                }
+
+                //file selection cancelled
+                if(!file){
+                    cancel();
+                    return; 
+                }
+
+                var fileExt = getFileExt(file.name);
+                if(fileExt && shots.ext.indexOf(fileExt) > -1) //correct extension
+                {
+                    var dim = shots.dim;
+                    var img = new Image();
+                    img.onload = function(){ //load the image to check dimensions
+                        if( this.width == dim[0] && this.height == dim[1] ||    //phone
+                            this.width == dim[1] && this.height == dim[0] ){    //tablet
+
+                            //store file in obj
+                            shots.value[targetName] = file;
+
+                            //check for isReady
+                            var ready = true;
+                            for(var shot in shots.value){
+                                if(!shots.value[shot]){
+                                    ready = false;
+                                    break;
+                                }
+                            }
+                            shots.isReady = ready;
+                            if(shots.hasError && ready){
+                                shots.hasError = false;
+                            }
+
+                        } else { //dimensions not met
+                            hasError();
+                        }                       
+                    };
+                    img.src = (window.URL || window.webkitURL).createObjectURL(file);
+                    
+                } else { //has error
+                    hasError();
+                }
+            },
+            changeFiles: function(e){
+                var targetName = e.target.name;
+                var obj_v = this[targetName];
+                var file = e.target.files[0];
+
+                var hasError = function(){
+                    obj_v.isReady = false;
+                    obj_v.hasError = true;
+                    obj_v.value = null;
+                    e.target.value = '';
+                }
+                
+                //file selection cancelled
+                if(!file){
+                    obj_v.isReady = false;
+                    obj_v.hasError = false;
+                    obj_v.value = null;
+                    e.target.value = '';
+                    return; 
+                }
+
+                var fileExt = getFileExt(file.name);
+                if( fileExt && obj_v.ext.indexOf(fileExt) > -1) //correct ext
+                {
+                    if(obj_v.size && file.size/1000000 > obj_v.size){
+                        hasError();
+                    }
+                    else if(file.type.indexOf('image') > -1){ //if image
+                        var dim = obj_v.dim;
+                        var img = new Image();
+                        img.onload = function(){ //load the image to check dimensions
+                            if( this.width == dim[0] && this.height == dim[1] ||
+                                this.width == dim[1] && this.height == dim[0] ){
+
+                                //store file in obj
+                                obj_v.value = file;
+                                obj_v.isReady = true;
+                                obj_v.hasError = false;
+
+                            } else { //dimensions not met
+                                hasError();
+                            }                       
+                        };
+                        img.src = (window.URL || window.webkitURL).createObjectURL(file);
+                    } else {
+                        //store file in obj
+                        obj_v.value = file;
+                        obj_v.isReady = true;
+                        obj_v.hasError = false;
+                    }
+                    
+                } else { //wrong file extension
+                    hasError();
+                }                
+            }
+        },
+        computed: {
+            submitDisabled: function(){
+                for(var d in this._data){
+                    if(!this._data[d].isReady){
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    });
+
+    
+//function to run on DOM ready
+(function(){
+    $('#submit-btn').one('click', function(){ //event-handler destroyed after first click
+        $('body').addClass('body_overlayOn');
+
+        //create form data object
+        var formData = new FormData();
+        for(var d in data_v._data){
+            if(typeof data_v[d].value == 'string'){
+                //string data
+                formData.set(d, data_v[d].value);
+            }
+            else if(data_v[d].multiVal){ //shots
+                for(var name in data_v[d].value){
+                    formData.set(
+                        name, 
+                        data_v[d].value[name], 
+                        data_v.name.value+'_'+name+'.'+getFileExt(data_v[d].value[name].name)
+                    );
+                }
+            } else { //other files
+                formData.set(
+                    d,
+                    data_v[d].value, 
+                    data_v.name.value+'_'+d+'.'+getFileExt(data_v[d].value.name)
+                );
+            }
+        }
+
+        console.log(formData);
+
+        //send to backend
+        $.ajax({
+            //url: 'http://localhost:3000/upload',
+            //url: 'http://localhost:5000/upload',
+            url: 'https://fast-taiga-21103.herokuapp.com/upload',
+            //url: '/api/appsubmit',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(res){
+                console.log('upload successful!');
+                $('body').addClass('complete');
+                console.log(res);
+            },
+            xhr: function() {
+                // create an XMLHttpRequest
+                var xhr = new XMLHttpRequest();
+
+                // listen to the 'progress' event
+                xhr.upload.addEventListener('progress', function(evt){
+                if (evt.lengthComputable){
+                    // calculate the percentage of upload completed
+                    var percentComplete = evt.loaded / evt.total;
+                    percentComplete = parseInt(percentComplete * 100);
+
+                    console.log(percentComplete);
+
+                    // update the Bootstrap progress bar with the new percentage
+                    $('#progressBar_percent').text(percentComplete);
+                    $('#progressBar_bar').css('width', percentComplete+'%');
+
+                }
+
+                }, false);
+
+                return xhr;
+            }
+        });
+
+
+    }); //end of submit button click-event handler
+
+})();
+var pingBackend = function(){
+    console.log('fn ping');
+    $.get(
+        //'http://localhost:5000/ping'
+        'https://fast-taiga-21103.herokuapp.com/ping'
+        //'/ping',
+    )
+    .done(function(res){
+        console.log('backend ping response: '+res);
+    }).fail(function() {
+        pingBackend();
+    });
+}
+pingBackend();
+</script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+.home_body>section{
+    padding: 20px 10px;
+    text-align:center;
+}
+.home_body>section>h1{
+    text-align: center;
+    text-transform: capitalize;
+    margin: 10px 0px;
+}
+
+.home_headerDiv{
+    height: 6px;
+    width: 20%;
+    min-width: 200px;
+    display: block;
+    margin: 14px auto 20px auto;
+}
+
+#home_section_top{
+    position: relative;
+    height: 700px;
+}
+
+.home_logo_container{
+    position: absolute;
+    left: 0px; right: 0px;
+    top: 42%;
+    -ms-transform: translateY(-50%); /* IE 9 */
+    -webkit-transform: translateY(-50%); /* Chrome, Safari, Opera */
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.home_logo_name{
+    font-size: 50px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.home_logo_name_red{
+    color: #a53f3f;
+    color: #ff4343;
+}
+.home_logo_slogan{
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/*-----section-----*/
+
+.home_market_block{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    /*border: 1px solid #e4e4e4;*/
+    box-sizing: border-box;
+    vertical-align: top;
+    padding: 4px;
+}
+.home_market_fig{
+    font-size: 46px;
+    font-weight: 600;
+    height: 80px;
+    line-height: 80px;
+    width: 120px;
+    margin: 0 auto;
+    border: 4px solid #a53f3f;
+    border-radius: 500px;
+
+    border: none;
+}
+.home_market_fig .fa-stack{
+    font-size: 0.5em;
+}
+
+#home_section_top_arrow{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    background-color: #FFFFFF;
+    margin: auto;
+    border-radius: 6px;
+    padding: 10px;
+    bottom: 4%;
+    font-size: 22px;
+    width: 200px;
+}
+#home_section_top_arrow>i{
+    display: block;
+}
+.home_stores_row{
+    display: inline-block;
+    padding: 0px 10px;
+}
+.home_stores{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 20px 0px;
+    width: 80px;
+}
+.home_stores > div{
+    padding: 8px 0px;
+}
+.home_stores img{
+    height: 50px; width: 50px;
+}
+.home_stores_nameAlt{
+    position: absolute;
+    padding: 0px !important;
+    left: 0px;
+    right: 0px;
+    bottom: -6px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: visible;
+}
+.home_stores_nameAlt:before{ content: '('; }
+.home_stores_nameAlt:after{ content: ')'; }
+
+
+.home_package_container{
+    overflow: visible;
+    white-space: nowrap;
+    border-radius: 8px;
+    display: inline-block;
+}
+.home_package_column{
+    font-size: 18px;
+    text-align: center;
+    vertical-align: top;
+    white-space: normal;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /*level 2*/
+}
+.home_package_column > div{
+    position: relative;
+    border-bottom: 1px solid #adadad;
+    padding: 10px 4px;
+}
+.home_package_column.minTablet{
+    display: none;
+    width: 200px;
+}
+.home_package_column > .home_package_halfH,
+.home_package_column > div.home_package_priceBox{
+    line-height: 27px;
+}
+.home_package_column > .home_package_row1{
+    height: auto; line-height: 30px;
+    font-weight: bold;
+    background-color: #EF5350;
+    color: #FFFFFF;
+}
+.home_package_rmb{
+    font-size: 14px;
+}
+.home_package_rmb:before{ content: '('; }
+.home_package_rmb:after{ content: ')'; }
+
+.home_package_column .fa-check,
+.home_package_column .fa-times{
+    font-size: 28px;
+}
+.home_package_column .fa-check{
+    color: green;
+}
+.home_package_column .fa-times{
+    color: #F44336;
+}
+.home_package_fontLarger{
+    font-size: 1.3em;
+}
+.home_package_deposit{
+    padding: 4px;
+    max-width: 800px;
+    white-space: normal;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.home_btnSlack{
+    display: inline-block;
+    height: 30px;
+    border-radius: 6px;
+    padding: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+.home_btnSlack:hover{
+    background: none;
+    background-color: #585858;
+}
+.home_btnSlack img{
+    max-height: 100%;
+}
+.home_btnSlack>span{
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+}
+
+#home_section_sdk .home_package_normal{
+    line-height: normal;
+    height: auto;
+    text-align: left;
+    padding: 28px;
+}
+
+
+#home_cta_btn{
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+.home_cta_validEmail #home_cta_btn,
+.home_cta_validEmail #home_cta_comments{
+    opacity: 1;
+}
+#home_cta_btn:active{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+.home_cta_invalidEmail #home_cta_email{
+    border-color: #F44336;
+}
+.home_cta_validEmail #home_cta_email{
+    border-color: green;
+}
+.home_cta_form:before{
+    width: auto;
+    content: "\00a0"; /*&nbsp;*/
+    text-align: left;
+    display: block;
+    margin: auto;
+    font-size: 14px;
+    padding: 2px 8px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 0px;
+    padding-bottom: 0px;    
+}
+.home_cta_invalidEmail .home_cta_form:before{
+    content: '\f06a \00a0 Invalid email';
+    color: #F44336;
+}
+.home_cta_validEmail .home_cta_form:before{
+    content: '\f0e0 \00a0 Valid email';
+    color: green;
+}
+
+
+.home_cta_loading .home_cta_msg_loading{
+    display: block;
+}
+.home_cta_success .home_cta_msg_success{
+    display: block;
+}
+.home_cta_msg_loading, .home_cta_msg_success,
+.home_cta_loading .home_cta_msg_ready, .home_cta_success .home_cta_msg_ready,
+.home_cta_success .home_cta_msg_loading{
+    display: none;
+}
+
+.home_cta_loading .home_cta_form, .home_cta_success .home_cta_form{
+    visibility: hidden;
+}
+
+
+#home_reclaim_currentStore,
+#home_reclaim_output [find="output_stores_exact"],
+#home_reclaim_output [find="output_stores_contain"]{
+    text-transform: capitalize;
+}
+.home_reclaim_inputContainer{
+    display: none;
+}
+.home_reclaim_inputMsg{
+    padding: 10px 20px 20px 20px;
+}
+#home_reclaim_input_appName, #home_reclaim_btn_search{
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid transparent;
+}
+#home_reclaim_input_appName{
+    border-bottom: 2px solid #F44336;
+    outline: none;
+    opacity: 0.5;
+}
+#home_reclaim_input_appName:focus{
+    opacity: 1;
+}
+#home_reclaim_btn_search{
+    background-color: #F44336;
+    color: #FFFFFF;
+}
+#home_reclaim_currentStore{
+    font-weight: bold;
+}
+#home_section_reclaim[status="ready"] .home_reclaim_inputContainer{
+    display: block;
+}
+#home_reclaim_output{
+    display: none;
+}
+#home_section_reclaim[status="done"] #home_reclaim_output{
+    display: block;
+}
+.home_reclaim_loading{
+    display: none;
+}
+#home_section_reclaim[status="loading"] .home_reclaim_loading{
+    display: block;
+}
+
+
+.home_form_reclaim_tag_email:before{
+    width: auto;
+    content: "\00a0";
+    text-align: left;
+    display: block;
+    margin: auto;
+    font-size: 16px;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.base_form[email="valid"] .home_form_reclaim_tag_email:before{
+    content: '\f0e0 \00a0 Valid email';
+    color: green;
+}
+.base_form[email="invalid"] .home_form_reclaim_tag_email:before{
+    content: '\f06a \00a0 Invalid email';
+    color: #F44336;
+}
+.base_form[email="invalid"] #home_reclaim_email{
+    border-color: #F44336;
+}
+.base_form[email="valid"] #home_reclaim_email{
+    border-color: green;
+}
+
+#home_reclaim_btn {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+.base_form[email="valid"] #home_reclaim_btn{
+    opacity: 1;
+}
+#home_reclaim_btn:active{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+.home_reclaim_msg_loading,
+.home_reclaim_msg_sent{
+    display: none;
+}
+#home_form_reclaim[status="loading"]>*,
+#home_form_reclaim[status="sent"]>*{
+    display: none;
+}
+#home_form_reclaim[status="loading"] .home_reclaim_msg_loading,
+#home_form_reclaim[status="sent"] .home_reclaim_msg_sent{
+    display: block;
+}
+
+
+
+#home_section_contact{
+    background-color: #263238;
+    color: #ECEFF1;
+}
+
+.home_contactList{
+    display: inline-block;
+    text-align: left;
+    margin: 20px 0px;
+    opacity: 0.6;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.home_copyright{
+    position: absolute;
+    left: 0px; right: 0px; bottom: 0px;
+    text-align: center;
+    padding: 8px 0px;
+    letter-spacing: 1px;
+}
+
+@media (min-width:320px) {}/* smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:375px) {
+    .home_stores{
+         width: 100px;
+    }
+}/* iPhone 6 portrait */
+@media (min-width:481px){}/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+@media (min-width:641px){
+    #home_section_top{
+        height: 1200px;
+    }
+    .home_logo_name{
+        padding: 10px 0px;
+        font-size: 60px;
+    }
+    .home_logo_slogan{
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+
+    .home_body>section{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .home_body>section>h1{
+        font-size: 28px;
+    }
+
+    #home_section_top_arrow{
+        font-size: 30px;
+        bottom: 12%;
+        width: 240px;
+    }
+
+    .home_market_block{
+        width: 300px;
+    }
+    .home_market_fig{
+        height: 120px;
+        width: 120px;
+        line-height: 120px;
+        font-size: 80px;
+    }
+    .home_package_column{
+        font-size: 20px;
+    }
+
+}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+@media (min-width:961px){
+    .home_package_container{
+        min-width: 800px;
+    }
+    .home_stores{
+        width: 120px;
+    }
+    .home_package_column{
+        display: inline-block !important;
+    }
+    .home_package_column > div{
+        height: 75px; line-height: 54px;
+    }
+    .home_package_column > .home_package_row1{
+        padding: 10px 20px;
+    }
+}/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:1025px){}/* big landscape tablets, laptops, and desktops */
+@media (min-width:1281px){}/* hi-res laptops and desktops */

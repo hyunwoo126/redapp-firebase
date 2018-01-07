@@ -1,0 +1,19 @@
+.pages_pSection{
+    margin: 40px 0px;
+}
+
+.pages_imgWrapper{
+    max-width: 800px;
+    background-color: #B0BEC5;
+    display: inline-block;
+    padding: 20px;
+}
+.pages_imgWrapper img{
+    max-width: 100%;
+}
+.pages_imgWrapper_caption{
+    color: #FFFFFF;
+}
+.pages_imgWrapper_caption a{
+    color: inherit;
+}

@@ -1,0 +1,41 @@
+li{
+    list-style: none;
+}
+li.base_boxshadow_1{
+    background-color: #FFFFFF;
+}
+button[disabled],
+select[disabled],
+a[disabled] {
+    pointer-events: none;
+    opacity: 0.6;
+    color: inherit;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+
+.dashboard_login_container{
+    margin: auto;
+    width: 500px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.dashboard_loginHeader_dashboard{
+    font-size: 24px;
+}
+
+.li_app{
+    margin-right: 20px;
+    padding: 12px;
+}
+table.storeList{
+    width: 100%;
+    padding: 0px 12px;
+}
+table.storeList thead{
+    font-weight: bold;
+    font-size: small;
+}

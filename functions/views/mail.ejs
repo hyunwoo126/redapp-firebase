@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include partials/head %>
+</head>
+<style type="text/css">
+    body{ padding-bottom: 0px; }
+    .login_container{
+        position: absolute;
+        top: 0px; left: 0px; right: 0px; bottom: 0px;
+        width: 100%;
+    }
+    .login_container .login_box{
+        position: relative;
+        top: 30%;
+        background-color: #FFFFFF;
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .mail_loginStatus{
+        padding: 12px 0px;
+        text-align: right;
+    }
+    .mail_data_fullwidth{ width: 100%; }
+    .mail_data table{
+        width: 100%;
+    }
+    .mail_data td{
+        vertical-align: top;
+    }
+    .mail_data table textarea{
+        resize: vertical;
+        min-height: 300px;
+        max-height: 600px;
+    }
+    .mail_preview_mobile{
+        display: none;
+        width: 375px;
+        margin: 10px 0px;
+    }
+    .mail_preview_mobile:after{
+        content: 'Mobile Preview- iPhone 6 (375px)'
+    }
+    .mail_preview{
+        background-color: #FFFFFF;
+        padding: 2px;
+        margin: 20px 0px;
+    }
+    .mail_preview:before{
+        content: 'Preview';
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    #mail_btn_send{
+        border: 0px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 2px;
+        padding: 4px 10px;
+        margin: 10px 0px;
+        background-color: #4d90fe;
+    }
+    #mail_btn_send[disabled]{
+        display: none;
+    }
+    #mail_response{
+        text-align: center;
+        padding: 10px;
+    }
+    #mail_response .fa{
+        color: #4d90fe;
+    }
+    @media (min-width:481px){
+        .mail_preview_mobile{
+            display: block;
+        }
+    }
+    @media (min-width:641px){
+        .mail_preview{
+            padding: 8px;
+        }
+    }
+
+</style>
+<body>
+<div id="body-content">
+
+    <div id="login_container" class="login_container">
+        <div class=" login_box base_boxshadow_1">
+            <h3>Redapp Login</h3>
+
+            <input style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+            &nbsp;&nbsp;&nbsp;
+            <input style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+            <br/><br/>
+            <button disabled id="quickstart-sign-in" name="signin">Sign In</button>
+            &nbsp;&nbsp;&nbsp;
+            <button id="quickstart-sign-up" name="signup" class="display_none">Sign Up</button>
+            &nbsp;&nbsp;&nbsp;
+            <button disabled id="quickstart-verify-email" name="verify-email" class="display_none">Send Email Verification</button>
+            &nbsp;&nbsp;&nbsp;
+            <button id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
+        
+        </div>
+    </div>
+
+    <div id="mail_container" class="display_none">
+            
+        <div class="mail_loginStatus">
+            You are signed in as <strong><span id="quickstart-sign-in-status">Unknown</span></strong>.
+            <button id="login_signout" name="slogin_ignout">Sign Out</button>
+        </div>
+
+        <div class="mail_data">
+            <table>
+            <tbody>
+                <tr>
+                    <td>from: </td><td><input disabled v-model="from"/>&nbsp;&nbsp;Gmail password:&nbsp;&nbsp;<input type="password" v-model="pass_gmail"/></td>
+                </tr>
+                <tr>
+                    <td>to: </td><td><input type="text" class="mail_data_fullwidth" v-model="to" placeholder="to"/></td>
+                </tr>
+                <tr>
+                    <td>cc: </td><td><input type="text" class="mail_data_fullwidth" v-model="cc" placeholder="cc"/></td>
+                </tr>
+                <tr>
+                    <td>bcc: </td><td><input type="text" class="mail_data_fullwidth" v-model="bcc" placeholder="bcc"/></td>
+                </tr>
+                <tr style="border-bottom: 1px solid grey;">
+                    <td></td>
+                    <td>You can add multiple addresses separated by commas</td>
+                </tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr>
+                    <td>subject: </td><td><input type="text" class="mail_data_fullwidth" v-model="subject" placeholder="subject"/></td>
+                </tr>
+                <tr>
+                    <td>body: </td>
+                    <td>
+                        <textarea class="mail_data_fullwidth" v-model="body"></textarea>
+                        <div>**Regular line breaks inside the textbox will not work. please use <strong>&lt;br&gt;</strong></div>
+                        <div>Here are some html tags you can use to add style:</div>
+                        <div><strong>&lt;strong&gt; text &lt;&#92;strong&gt;</strong> use this to bold</div>
+                        <div><strong>&amp;nbsp;</strong> use this to add extra spaces. Otherwise spaces next to each other gets combined to one.</div>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="mail_preview base_boxshadow_1">
+            <table><tbody>
+                <tr>
+                    <td>from: </td><td>{{from}}</td>
+                </tr>
+                <tr>
+                    <td>to: </td><td>{{to}}</td>
+                </tr>
+                <tr>
+                    <td>cc: </td><td>{{cc}}</td>
+                </tr>
+                <tr>
+                    <td>bcc: </td><td>{{bcc}}</td>
+                </tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr>
+                    <td>subject: </td><td><strong>{{subject}}</strong></td>
+                </tr>
+            </tbody></table>
+            <div class="mail_preview_mobile">
+                <%- email_template %>
+            </div>
+            <%- email_template %>
+            <button id="mail_btn_send" class="base_boxshadow_1">Send (please double check the preview)</button>
+
+            <div id="mail_response">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="/__/firebase/4.6.1/firebase-app.js"></script>
+<script src="/__/firebase/4.6.1/firebase-auth.js"></script>
+<!-- <script src="/__/firebase/4.6.1/firebase-database.js"></script> -->
+<script src="/__/firebase/4.6.1/firebase-firestore.js"></script>
+<!-- <script src="/__/firebase/4.6.1/firebase-messaging.js"></script> -->
+<script src="/__/firebase/init.js"></script>
+
+<script type="text/javascript">
+// Initialize the default app
+//var defaultApp = firebase.initializeApp(defaultAppConfig);
+
+//console.log(defaultApp.name);  // "[DEFAULT]"
+
+</script>
+<script type="text/javascript">
+/**
+ * Handles the sign in button press.
+ */
+function toggleSignIn() {
+    if (firebase.auth().currentUser) {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+    } else {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        if (email.length < 4) {
+            alert('Please enter an email address.');
+            return;
+        }
+        if (password.length < 4) {
+            alert('Please enter a password.');
+            return;
+        }
+        // Sign in with email and pass.
+        // [START authwithemail]
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // [START_EXCLUDE]
+            if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+            } else {
+            alert(errorMessage);
+            }
+            console.log(error);
+            document.getElementById('quickstart-sign-in').disabled = false;
+            // [END_EXCLUDE]
+        });
+        // [END authwithemail]
+    }
+    document.getElementById('quickstart-sign-in').disabled = true;
+}
+/**
+ * Handles the sign up button press.
+ */
+function handleSignUp() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    if (email.length < 4) {
+    alert('Please enter an email address.');
+    return;
+    }
+    if (password.length < 4) {
+    alert('Please enter a password.');
+    return;
+    }
+    // Sign in with email and pass.
+    // [START createwithemail]
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // [START_EXCLUDE]
+    if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.');
+    } else {
+        alert(errorMessage);
+    }
+    console.log(error);
+    // [END_EXCLUDE]
+    });
+    // [END createwithemail]
+}
+/**
+ * Sends an email verification to the user.
+ */
+function sendEmailVerification() {
+    // [START sendemailverification]
+    firebase.auth().currentUser.sendEmailVerification().then(function() {
+    // Email Verification sent!
+    // [START_EXCLUDE]
+    alert('Email Verification Sent!');
+    // [END_EXCLUDE]
+    });
+    // [END sendemailverification]
+}
+function sendPasswordReset() {
+    var email = document.getElementById('email').value;
+    // [START sendpasswordemail]
+    firebase.auth().sendPasswordResetEmail(email).then(function() {
+    // Password Reset Email Sent!
+    // [START_EXCLUDE]
+    alert('Password Reset Email Sent!');
+    // [END_EXCLUDE]
+    }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // [START_EXCLUDE]
+    if (errorCode == 'auth/invalid-email') {
+        alert(errorMessage);
+    } else if (errorCode == 'auth/user-not-found') {
+        alert(errorMessage);
+    }
+    console.log(error);
+    // [END_EXCLUDE]
+    });
+    // [END sendpasswordemail];
+}
+
+//send POST to Redapp backend to send stylized email
+function sendMail(){
+    var btn = this;
+    btn.disabled = true;
+
+    var elem_res = document.getElementById('mail_response');
+    elem_res.innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw" aria-hidden="true"></i>';
+
+    //if signed in through firebase
+    if (firebase.auth().currentUser){
+        $.post('/mail', {
+            from: data_vue.from,
+            pass_gmail: data_vue.pass_gmail,
+            to: data_vue.to, cc: data_vue.cc, bcc: data_vue.bcc,
+            subject: data_vue.subject,
+            body: data_vue.body,
+            sig_name: data_vue.sig_name,
+            sig_email: data_vue.sig_email,
+        }).done(function(res){
+            btn.disabled = false;
+            if(res.error){
+                elem_res.innerHTML = '<div>There was an error.</div><div>'+res.msg+'</div>';
+            } else {
+                elem_res.innerHTML = '<div>Email was sent successfully.<br>You should see the email in your Sent folder in your Gmail.</div>';
+            }
+        });
+    }
+}
+
+
+
+/**
+ * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+ *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+ *    out, and that is where we update the UI.
+ */
+function initApp() {
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    // Listening for auth state changes.
+    // [START authstatelistener]
+    firebase.auth().onAuthStateChanged(function(user) {
+        // [START_EXCLUDE silent]
+        document.getElementById('quickstart-verify-email').disabled = true;
+        // [END_EXCLUDE]
+
+        //clear data
+        data_vue.clear();
+
+        if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            var providerData = user.providerData;
+
+            var docRef = db.collection("users").doc(uid).get().then(function(doc) {
+                if (doc.exists) {
+                    var userDoc = doc.data();
+                    if(userDoc.admin){
+                        if(userDoc.firstName){
+                            document.getElementById('quickstart-sign-in-status').textContent = userDoc.firstName;
+                        } else {
+                            document.getElementById('quickstart-sign-in-status').textContent = email;
+                        }
+                        document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+                        
+                        if (!emailVerified){
+                        document.getElementById('quickstart-verify-email').disabled = false;
+                        }
+
+                        $('#mail_container').removeClass('display_none');
+                        $('#login_container').addClass('display_none');
+
+                        data_vue.from = email;
+                        data_vue.sig_email = email;
+                        if(userDoc.firstName && userDoc.lastName){
+                            data_vue.sig_name = userDoc.firstName+' '+userDoc.lastName;
+                        }
+                        
+                        //load email templates
+                        if(typeof userDoc.emailTemplates == 'object' && userDoc.emailTemplates.length){
+                            data_vue.body = userDoc.emailTemplates[0].replace(/<br>/g, '\n<br>');
+                        }
+
+                    } else {
+                        alert('Sorry, admins only.');
+                        firebase.auth().signOut();
+                    }
+                } else {
+                    alert('User is not set up correctly. Please contact sky@redapp.co with your user information.');
+                    firebase.auth().signOut();
+                }
+            }).catch(function(error) {
+                alert('There was an error. Please try again.');
+                firebase.auth().signOut();
+            });
+
+        } else {
+            // User is signed out.
+            // [START_EXCLUDE]
+            document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+            // [END_EXCLUDE]
+            $('#mail_container').addClass('display_none');
+            $('#login_container').removeClass('display_none');
+        }
+        // [START_EXCLUDE silent]
+        document.getElementById('quickstart-sign-in').disabled = false;
+        // [END_EXCLUDE]
+    });
+    // [END authstatelistener]
+    document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+    document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
+    document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+    document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+
+
+    document.getElementById('login_signout').addEventListener('click', function(){
+        if (firebase.auth().currentUser) {
+            firebase.auth().signOut();
+        }
+    });
+
+    document.getElementById('mail_btn_send').addEventListener('click', sendMail, false);
+
+    document.getElementById('password').addEventListener('keypress', function(e){
+        if(e.keyCode == 13 || e.which == 13){
+            toggleSignIn();
+        }
+    });
+    
+}
+window.onload = function() {
+    initApp();
+};
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+<script>
+var data_vue = new Vue({
+    el: '#mail_container',
+    data: {
+        from: '',
+        pass_gmail: '',
+        to: '', cc: '', bcc: '',
+        subject: '',
+        body: '',
+        sig_name: '',
+        sig_email: '',
+    },
+    methods: {
+        clear: function(){
+            for(var key in this._data){
+                this[key] = '';
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
