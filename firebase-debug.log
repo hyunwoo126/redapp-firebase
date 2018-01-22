@@ -1,0 +1,92 @@
+[debug] [2018-01-21T23:17:33.037Z] ----------------------------------------------------------------------
+[debug] [2018-01-21T23:17:33.039Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Sky\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only hosting,functions
+[debug] [2018-01-21T23:17:33.039Z] CLI Version:   3.16.0
+[debug] [2018-01-21T23:17:33.039Z] Platform:      win32
+[debug] [2018-01-21T23:17:33.039Z] Node Version:  v8.9.3
+[debug] [2018-01-21T23:17:33.040Z] Time:          Sun Jan 21 2018 18:17:33 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:33.040Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-21T23:17:33.058Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-21T23:17:33.060Z] > authorizing via signed-in user
+[debug] [2018-01-21T23:17:33.064Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/redapp-1  
+  
+ Sun Jan 21 2018 18:17:33 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:33.522Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T23:17:33.523Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/redapp-1/tokens  
+  
+ Sun Jan 21 2018 18:17:33 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:33.999Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Sky\Documents\firebase\redapp-1'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-01-21T23:17:36.114Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/redapp-1  
+  
+ Sun Jan 21 2018 18:17:36 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:36.115Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/redapp-1/apiKeys  
+  
+ Sun Jan 21 2018 18:17:36 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:36.115Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/redapp-1  
+  
+ Sun Jan 21 2018 18:17:36 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:36.495Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T23:17:36.496Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/346231253222/clients/_:getWebAppConfig  
+  
+ Sun Jan 21 2018 18:17:36 GMT-0500 (Eastern Standard Time)
+[debug] [2018-01-21T23:17:36.498Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T23:17:36.646Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T23:17:36.864Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] [hosting] Rewriting /mail to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] +  functions: app: http://localhost:5001/redapp-1/us-central1/app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app
+[info] [hosting] Rewriting /dashboard to local function app

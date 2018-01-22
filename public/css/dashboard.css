@@ -22,9 +22,22 @@ a[disabled] {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+    background: white;
+    padding: 18px 2px;
 }
 .dashboard_loginHeader_dashboard{
     font-size: 24px;
+}
+.dashboard_login_input,
+.dashboard_login_signin{
+    display: inline-block;
+    width: 90%;
+}
+
+
+.login_status{
+    text-align: right;
 }
 
 .li_app{

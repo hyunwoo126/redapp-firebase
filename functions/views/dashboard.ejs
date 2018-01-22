@@ -12,30 +12,42 @@
     <div id="app">
         
 
-        <div id="login_container" class="dashboard_login_container" v-if="!login.on">
-            <div class="base_boxshadow_1">
+        <div id="login_container" class="dashboard_login_container base_boxshadow_1" v-if="!login.on">
+            <div>
                 <div class="base_header_redapp">
                     <span class="base_header_red base_color_red">RED</span><span class="base_header_app base_color_grey_900">APP</span>
                     <span class="dashboard_loginHeader_dashboard">Dashboard</span>
                 </div>
     
-                <input style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email" v-model="login.email"/>
-                &nbsp;&nbsp;&nbsp;
-                <input style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password" v-model="login.password"/>
-                <br/><br/>
-                <button id="quickstart-sign-in" name="signin" v-on:click="signIn">Sign In</button>
-                &nbsp;&nbsp;&nbsp;
+                <input type="text" id="email" name="email" placeholder="Email" 
+                    class="dashboard_login_input"
+                    v-model="login.email" 
+                />
+                <input type="password" id="password" name="password" placeholder="Password" 
+                    class="dashboard_login_input"
+                    v-model="login.password" 
+                    v-on:keypress="keypressSignIn"
+                />
+                <button id="quickstart-sign-in" name="signin"
+                    class="dashboard_login_signin button-primary"
+                    v-on:click="signIn" 
+                >
+                    Sign In
+                </button>
+                <br/>
+                
+                
                 <button id="quickstart-sign-up" name="signup" class="display_none">Sign Up</button>
                 &nbsp;&nbsp;&nbsp;
                 <button id="quickstart-verify-email" name="verify-email" class="display_none">Send Email Verification</button>
                 &nbsp;&nbsp;&nbsp;
-                <button id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
-            
+                <button id="quickstart-password-reset" name="verify-email" class="display_none">Send Password Reset Email</button>
+                &nbsp;&nbsp;&nbsp;
             </div>
         </div>
 
         <div v-if="login.on">
-            <div class="mail_loginStatus">
+            <div class="login_status">
                 You are signed in as <strong><span id="quickstart-sign-in-status">{{currentUser.email}}</span></strong>.
                 <button id="login_signout" name="slogin_ignout" v-on:click="signOut">Sign Out</button>
                 <a href="#" onclick="sendPasswordReset()">Reset Password</a>
@@ -82,6 +94,7 @@
     <script src="/js/dashboard.js"></script>
     <script src="/js/moment.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.1/velocity.min.js"></script>
 </body>
 </html>
     

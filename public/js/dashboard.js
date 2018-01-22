@@ -183,8 +183,8 @@ Vue.component('new-store', {
         },
         submit: function(){
             var that = this;
-            this.isDisabled = true;
             if(this.selection.length){
+                this.isDisabled = true;
                 db.collection("users").doc(that.uid).get().then(function(doc){
                     if(doc.exists){
                         if(doc.data().apps){
@@ -211,6 +211,7 @@ Vue.component('new-store', {
                                 });
                                 that.isDisabled = false;
                                 that.selected = '';
+                                app.flashGreen(that.$parent.$el);
                             });
                         }
 
@@ -314,10 +315,10 @@ Vue.component('stores', {
                             db.collection("users").doc(that.uid).update({
                                 apps: arr_apps,
                             }).then(function(){
-                                console.log(val);
                                 //update local
                                 that.store.link = val;
                                 that.isDisabled = false;
+                                app.flashGreen(that.$el);
                             }).catch(function(){
                                 alert('error');
                                 that.isDisabled = false;
@@ -353,6 +354,8 @@ Vue.component('stores', {
                             db.collection("users").doc(that.uid).update({
                                 apps: arr_apps,
                             }).then(function(){
+                                //global app.flashGreen method
+                                app.flashGreen(that.$el);
                                 //update local
                                 that.store.status = newStatus;
                                 that.isDisabled = false;
@@ -517,6 +520,20 @@ var app = new Vue({
         }
     },
     methods: {
+        flashGreen: function(elem){
+            $(elem).velocity({ backgroundColor: "#5fba7d", }, 100)
+            .velocity({backgroundColor: '#FFFFFF'},{
+                duration: 400,
+                complete: function(elem){
+                    elem[0].style.backgroundColor = '';
+                }
+            });
+        },
+        keypressSignIn: function(e){
+            if(e.which == 13 || e.keyCode == 13){
+                this.signIn();
+            }
+        },
         clearClients: function(){
             while(this.clients.length){
                 this.clients.pop();
@@ -528,7 +545,7 @@ var app = new Vue({
                 this.login.on = false;
             }
         },
-        signIn: function(e){
+        signIn: function(){
             var email = this.login.email;
             var password = this.login.password;
             if (email.length < 4) {
