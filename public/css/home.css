@@ -183,6 +183,30 @@
     margin: 0 auto;
 }
 
+.home_addon_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+.home_addon {
+    background: #ffffff;
+    padding: 20px 10px;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 18px;
+    margin: 10px;
+}
+.home_addon:hover {
+    background-color: #EF5350;
+    color: white;
+}
+.home_addon .fa {
+    font-size: 44px;
+    margin: 20px;
+}
+
 .home_btnSlack{
     display: inline-block;
     height: 30px;
